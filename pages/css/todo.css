@@ -1,0 +1,131 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Oswald', sans-serif;
+    background-color: rgb(29, 26, 26);
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: black;
+    border-bottom: 2px solid rgb(48, 45, 45);
+}
+.navigation {
+    display: flex;
+    justify-content: space-between;
+}
+.btNewList {
+    padding: 5px;
+    background-color: rgba(46, 48, 41, 0.767);
+    color: white;
+    font-weight: bold;
+    width: 100px;
+    border-color: transparent;
+
+}
+.btNav {
+    padding: 5px;
+    width: 100px;
+    background-color: rgba(46, 48, 41, 0.767);
+    color: white;
+    border-color: transparent;
+    margin: 1px;
+}
+
+.btSearch {
+    padding: 5px;
+    width: 100px;
+}
+
+.panel-list {
+    width: 200px;
+    background-color: #474643;
+    color: white;
+    height: 800px;
+}
+
+.btNav:hover {
+    background-color: rgb(119, 114, 114);
+}
+
+.btNav:onmousekey {
+    background-color: rgb(119, 114, 114);
+}
+.content-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    flex-wrap:  wrap;
+    
+}
+.item-list {
+    width: 200px;
+    height: 100px;
+    background-color: rgb(155, 228, 241);
+    margin: 20px;
+    border-radius: 8px;
+    padding: 10px;
+}
+.form-list {
+    display: flex;    
+    justify-content: center;
+    margin: 10px;
+}
+.btAdd {
+   
+    width: 100px;
+}
+.form-task {
+    display: flex;
+    justify-content: center;
+    
+    margin: 10px;
+}
+.dueDateGroup {
+    display: flex;
+    justify-content: right;
+    margin: 10px;
+}
+.ctlDueDate {
+    margin: 2px;
+}
+.addGroup {
+    display: flex;
+    justify-content: right;
+    margin: 10px;
+}
+.priorityGroup {
+    display: flex;
+    justify-content: right;
+    margin: 10px;
+}
+.labelToDo {
+    color: white;
+    margin: 10px;
+}
+
+.taskDetail {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.task-table{
+    margin: 10px;
+    width: 80%;
+}
+
+.task-table, td {
+    color: white;
+    border: 0.1px solid white;
+}
+
+.task-table td {
+    text-align: center;
+}
+
