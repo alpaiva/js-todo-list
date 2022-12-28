@@ -15,6 +15,7 @@
     <header class='header'>
         <div>
             <button newTask class='btNav'>New Task</button>
+            <button fetchTasks class='btNav'>Fetch Tasks</button>
         </div>
     </header>
 
@@ -27,23 +28,22 @@
 </body>
 
 
-<script src='./js/NewTaskController.js'></script>
+<script src='../app/controller/NewTaskController.js'></script>
 
-<script src='./model/Task.js'></script>
-<script src='./model/ListTask.js'></script>
-
+<script src='../app/model/Task.js'></script>
+<script src='../app/model/ListTask.js'></script>
+<script src='../app/service/TaskService.js'></script>
 <script>
     const newTaskController = new NewTaskController()
     const bt = document.querySelector('[newTask]')
     bt.onclick = e => {
         newTaskController.showForm()
     }
-   
-    
-
-
-
-
+    const btFetch = document.querySelector('[fetchTasks]')
+    btFetch.onclick = e => {
+        newTaskController.fetchTasks()
+    }
+       
 </script>
 
 </html>

@@ -63,45 +63,14 @@ class NewTaskController {
 
     addTask(event) {
         event.preventDefault();
-
+        
         const task = new Task(this._name.value,
             this._dueDate.value,
             this._priority.value,
             this._notes.value)
 
-        this._listTask.add(task)
-        let items = `<table id='taskTable' class='task-table'>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Priority</th>
-                <th>Name</th>
-                <th>Due Date</th>
-                <th>Notes</th>
-            </tr>
-        </thead>
-        
-        <tbody>
-
-            ${this._listTask.getAll().map(n =>
-            `
-                    <tr>
-                        <td>${n.id}</td>
-                        <td>${n.task.getPriority()}</td>
-                        <td>${n.task.getName()}</td>
-                        <td>${n.task.getDueDate()}</td>
-                        <td>${n.task.getNotes()}</td>
-                        <td><button onclick='newTaskController.remove(this, "${n.id}")'>OK</td>
-                    </tr>
-                `
-        ).join('')}
-        </tbody>
-    </table>`
-
-        const innerHtml = `<div listTasks 
-        class='content-list'>${items}</div>`
-
-        this.updateView(innerHtml)
+        postTask(task).then(task => this.fetchTasks());
+      
 
     }
 
@@ -111,6 +80,49 @@ class NewTaskController {
         row.parentNode.removeChild(row)
         this._listTask.remove(id)
         
+    }
+
+    fetchTasks() {
+       
+        getAllTasks().then(tasks => {
+            let listTasks = tasks.map(task => new Task(
+                    task.title,
+                    task.scheduleDate,
+                    task.priority,
+                    task.description));
+            let items = 
+            `<table id='taskTable' class='task-table'>
+                <thead>
+                    <tr>
+                        
+                        <th>Priority</th>
+                        <th>Name</th>
+                        <th>Due Date</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    ${listTasks.map(n =>
+                        `
+                                <tr>
+                                    
+                                    <td>${n.getPriority()}</td>
+                                    <td>${n.getName()}</td>
+                                    <td>${n.getDueDate()}</td>
+                                    <td>${n.getNotes()}</td>     
+                                    <td><button onclick='newTaskController.remove(this, "${n.id}")'>OK</td>
+                                </tr>
+                            `
+                    ).join('')}
+                    </tbody>
+            </table>`
+
+            const innerHtml = `<div listTasks 
+            class='content-list'>${items}</div>`
+
+            this.updateView(innerHtml)
+        });
     }
 
 }
